@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phoenix Robotics Club - LNMIIT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a; /* A very dark grey, almost black */
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.6), 0 0 10px rgba(0, 255, 255, 0.4);
+        }
+        .card {
+            background-color: rgba(17, 24, 39, 0.8); /* Semi-transparent dark blue-gray */
+            border: 1px solid rgba(55, 65, 81, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: rgba(0, 255, 255, 0.7);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.1);
+        }
+        .tab-active {
+            background-color: #0891b2; /* Cyan-600 */
+            color: white;
+        }
+        .tab-inactive {
+            background-color: rgba(31, 41, 55, 0.5); /* Gray-800 semi-transparent */
+            color: #9ca3af; /* Gray-400 */
+        }
+        .tab-inactive:hover {
+            background-color: rgba(55, 65, 81, 0.7);
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+
+    <!-- Header -->
+    <header class="py-6 px-4 md:px-8 border-b border-gray-800 sticky top-0 z-50" style="background-color: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <svg class="w-10 h-10 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a12.022 12.022 0 00-11.68 0 6 6 0 1011.68 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75a.75.75 0 100-1.5.75.75 0 000 1.5z" />
+                </svg>
+                <h1 class="text-xl md:text-2xl font-bold text-white"><span class="text-cyan-400">Phoenix</span> Robotics Club</h1>
+            </div>
+            <nav class="hidden md:flex gap-6 items-center">
+                <a href="#resources" class="hover:text-cyan-400 transition-colors">Resources</a>
+                <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="min-h-[60vh] flex items-center justify-center text-center px-4 py-20" style="background: radial-gradient(ellipse at bottom, #001f3f 0%, #0a0a0a 70%);">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-black text-white leading-tight">Welcome to the Future of Robotics at <span class="text-cyan-400 text-glow">LNMIIT</span></h2>
+                <p class="mt-6 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">This is your starting point. A curated guide by Phoenix, the Robotics Club, to help you navigate the exciting world of robotics. Let's start building!</p>
+                <div class="mt-10">
+                    <a href="#resources" class="bg-cyan-500 hover:bg-cyan-400 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-cyan-500/20">Explore Resources</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources" class="py-20 px-4 md:px-8 fade-in">
+            <div class="container mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Resource Hub</h2>
+                    <p class="text-gray-400 mt-2">Your complete roadmap from beginner to expert.</p>
+                </div>
+                
+                <div id="tabs-container" class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+                    <!-- Tabs will be inserted here by JS -->
+                </div>
+
+                <div id="tabs-content-container">
+                    <!-- Content will be inserted here by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 px-4 md:px-8 bg-gray-900/50 fade-in">
+            <div class="container mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Project Ideas</h2>
+                    <p class="text-gray-400 mt-2">Get your hands dirty with these project ideas.</p>
+                </div>
+                <div id="projects-tabs-container" class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+                    <!-- Project tabs will be inserted here by JS -->
+                </div>
+                <div id="projects-content-container">
+                    <!-- Project content will be inserted here by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-6">
+        <div class="container mx-auto text-center text-gray-500">
+            <p>&copy; 2025 Phoenix Robotics Club, LNMIIT. Built for the builders of tomorrow.</p>
+        </div>
+    </footer>
+
+    <script>
+        const resourcesData = {
+            "Beginner": {
+                "Electronics Basics": [
+                    { title: 'YouTube Playlist', url: 'https://www.youtube.com/playlist?list=PLAROrg3NQn7cyu01HpOv5BW0217XWBZU0' },
+                    { title: 'YouTube Playlist', url: 'https://www.youtube.com/playlist?list=PLwjKiyK4LLCAN5TddEZyliChEMpF0OOL' }
+                ],
+                "Getting started with Arduino": [
+                    { title: 'YouTube Video', url: 'https://www.youtube.com/watch?v=BLrHTHUjPuw' },
+                    { title: 'Arduino Docs', url: 'https://docs.arduino.cc/learn/' },
+                    { title: 'Beginner-Intermediate Playlist', url: 'https://www.youtube.com/playlist?list=PLGs0VKk2DiYw-L-RibttcvK-WBZm8WLEP' }
+                ],
+                "ESP32 Starter Guide": [
+                    { title: 'YouTube Video', url: 'https://www.youtube.com/watch?v=xPIN_TK3VLQ' }
+                ],
+                "Recommended Channels": [
+                    { title: 'GreatScott!', type: 'channel' },
+                    { title: 'Electronoobs', type: 'channel' },
+                    { title: 'Afrotechmods', type: 'channel' }
+                ]
+            },
+            "Intermediate": {
+                "Raspberry Pi Basics": [
+                    { title: 'Robotics Backend', url: 'https://roboticsbackend.com/category/raspberry-pi/' }
+                ],
+                "CAD Designing Basics": [
+                    { title: 'YouTube Playlist', url: 'https://www.youtube.com/playlist?list=PLrZ2zKOtC-C4rWfapgngoe9o2-ng8ZBr' }
+                ],
+                "ROS2": [
+                    { title: 'ROS2 Docs (Humble)', url: 'http://docs.ros.org/en/humble/' },
+                    { title: 'YouTube Playlist', url: 'https://www.youtube.com/playlist?list=PLunhqkrRNRhYYCaSTVP-qJnyUPkTxJnBt' }
+                ],
+                "Python for Beginners": [
+                    { title: 'YouTube Video', url: 'https://www.youtube.com/watch?v=eWRfhZUzrAc' }
+                ],
+                 "Recommended Channels": [
+                    { title: 'DroneBot Workshop', type: 'channel' },
+                    { title: 'HowToMechatronics', type: 'channel' },
+                    { title: 'Builderdude35', type: 'channel' },
+                    { title: 'Articulated Robotics', type: 'channel' }
+                ]
+            },
+            "Advanced": {
+                 "Robot Simulation": [
+                    { title: 'Cyberbotics Webots YT', url: 'https://www.youtube.com/@cyberboticswebots' },
+                    { title: 'YouTube Playlist', url: 'https://www.youtube.com/playlist?list=PLn8PRpmsu08rdL7jwgrQjewdFXxDHbyIV' }
+                ],
+                "STM32 Bare Metal": [
+                    { title: 'Vivonomicon Blog', url: 'https://vivonomicon.com/category/stm32-baremetal-examples/' },
+                    { title: 'YouTube Playlist', url: 'https://www.youtube.com/playlist?list=PLbQ-Ps0nJos2ZEHoDxO-mmIWlz1t7trR' }
+                ],
+                "PCB Design (Basics)": [
+                    { title: 'YouTube Playlist', url: 'https://www.youtube.com/playlist?list=PLn6004q9oeqG191KifK6xHGuqvXGb374G' }
+                ],
+                "Computer Vision": [
+                    { title: 'YouTube Video', url: 'https://www.youtube.com/watch?v=01sAkU_NV0Y' },
+                    { title: 'YouTube Playlist', url: 'https://www.youtube.com/playlist?list=PLMoSUbG1Q_r8jFS04rot-3NzidnV54Z2q' }
+                ],
+                "Mechanical Engineering": [
+                    { title: 'YouTube Channel', url: 'https://www.youtube.com/@mastermechanicaldesign/videos' }
+                ],
+                "Blogs": [
+                    { title: 'Hackaday', url: 'https://hackaday.com/' }
+                ],
+                "Recommended Channels": [
+                    { title: 'Joop Brokking', type: 'channel' }, { title: 'Aaed Musa', type: 'channel' },
+                    { title: 'Will Cogley', type: 'channel' }, { title: 'James Bruton', type: 'channel' }
+                ]
+            },
+            "Final Boss": {
+                "ARM Assembly for Microcontrollers": [
+                    { title: 'Mikrocontroller.net Tutorial', url: 'https://www.mikrocontroller.net/articles/ARM-ASM-Tutorial' }
+                ],
+                "PCB Design (Advanced)": [
+                    { title: 'YouTube Playlist', url: 'https://www.youtube.com/playlist?list=PLXSyc11qLa1b9VA7nw8-DiLRXVhZ2iUN2' }
+                ],
+                "Core Electronics": [
+                     { title: 'Ben Eater YouTube', url: 'https://www.youtube.com/@BenEater/videos' }
+                ],
+                "Industrial Robotics": [
+                    { title: 'Agility Robotics', url: 'https://www.youtube.com/@AgilityRobotics/videos' },
+                    { title: 'Kuka Robot Group', url: 'https://www.youtube.com/c/KukaRobotGroup/videos' },
+                    { title: 'HEBI Robotics', url: 'https://www.youtube.com/@HEBIRobotics/videos' }
+                ],
+                "Recommended Channels": [
+                    { title: 'Phil\'s Lab', type: 'channel' }, { title: 'Ben Eater', type: 'channel' }, { title: 'MIT Robotics', type: 'channel' }
+                ]
+            }
+        };
+
+        const projectsData = {
+            "Beginner": ["LED Chaser / LED Cube", "Smart Lock", "Smart Home Automation", "Radar", "RC Car"],
+            "Intermediate": ["Line Follower Robot", "Robotic Arm", "2D Plotter", "RC Plane", "Self-Balancing Bot", "IoT Security System"],
+            "Advanced": ["STM32 based Quadcopter", "Mars Rover", "Model Rocket", "Animatrons"]
+        };
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabsContainer = document.getElementById('tabs-container');
+            const contentContainer = document.getElementById('tabs-content-container');
+            
+            // --- Populate Resources ---
+            const levels = Object.keys(resourcesData);
+            levels.forEach((level, index) => {
+                // Create Tab Button
+                const tabButton = document.createElement('button');
+                tabButton.textContent = level;
+                tabButton.className = `px-4 py-2 rounded-md font-semibold transition-colors duration-200 ${index === 0 ? 'tab-active' : 'tab-inactive'}`;
+                tabButton.dataset.level = level;
+                tabsContainer.appendChild(tabButton);
+
+                // Create Content Div
+                const contentDiv = document.createElement('div');
+                contentDiv.id = `content-${level}`;
+                contentDiv.className = `grid grid-cols-1 md:grid-cols-2 gap-6 ${index > 0 ? 'hidden' : ''}`;
+                const topics = resourcesData[level];
+                
+                Object.keys(topics).forEach(topic => {
+                    let linksHtml = topics[topic].map(link => {
+                        if (link.type === 'channel') {
+                            return `<li class="text-gray-400 font-medium">${link.title}</li>`;
+                        }
+                        return `
+                            <li>
+                                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 hover:underline">
+                                    <svg class="w-4 h-4 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" /></svg>
+                                    <span>${link.title}</span>
+                                </a>
+                            </li>
+                        `;
+                    }).join('');
+                    
+                    contentDiv.innerHTML += `
+                        <div class="card p-6 rounded-lg">
+                            <h3 class="font-bold text-white text-lg mb-3">${topic}</h3>
+                            <ul class="space-y-2">${linksHtml}</ul>
+                        </div>
+                    `;
+                });
+                contentContainer.appendChild(contentDiv);
+            });
+
+            // Tab switching logic
+            tabsContainer.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    const level = e.target.dataset.level;
+
+                    // Update button styles
+                    tabsContainer.querySelectorAll('button').forEach(btn => {
+                        btn.classList.remove('tab-active');
+                        btn.classList.add('tab-inactive');
+                    });
+                    e.target.classList.remove('tab-inactive');
+                    e.target.classList.add('tab-active');
+                    
+                    // Show/hide content
+                    contentContainer.querySelectorAll('div[id^="content-"]').forEach(div => {
+                         div.classList.add('hidden');
+                    });
+                    document.getElementById(`content-${level}`).classList.remove('hidden');
+                }
+            });
+
+            // --- Populate Projects with Tabs---
+            const projectsTabsContainer = document.getElementById('projects-tabs-container');
+            const projectsContentContainer = document.getElementById('projects-content-container');
+
+            const projectLevels = Object.keys(projectsData);
+            projectLevels.forEach((level, index) => {
+                // Create Tab Button
+                const tabButton = document.createElement('button');
+                tabButton.textContent = level;
+                tabButton.className = `px-4 py-2 rounded-md font-semibold transition-colors duration-200 ${index === 0 ? 'tab-active' : 'tab-inactive'}`;
+                tabButton.dataset.level = level;
+                projectsTabsContainer.appendChild(tabButton);
+
+                // Create Content Div for this level
+                const contentDiv = document.createElement('div');
+                contentDiv.id = `project-content-${level}`;
+                contentDiv.className = `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ${index > 0 ? 'hidden' : ''}`;
+
+                // Populate the content div with projects for this level
+                projectsData[level].forEach(project => {
+                    const projectCard = document.createElement('div');
+                    projectCard.className = 'card p-6 rounded-lg flex flex-col justify-between';
+                    projectCard.innerHTML = `
+                        <div>
+                            <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-cyan-600 bg-cyan-200">${level}</span>
+                            <h3 class="font-bold text-white text-xl mt-3">${project}</h3>
+                        </div>
+                    `;
+                    contentDiv.appendChild(projectCard);
+                });
+                projectsContentContainer.appendChild(contentDiv);
+            });
+
+            // Project Tab switching logic
+            projectsTabsContainer.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    const level = e.target.dataset.level;
+
+                    // Update button styles
+                    projectsTabsContainer.querySelectorAll('button').forEach(btn => {
+                        btn.classList.remove('tab-active');
+                        btn.classList.add('tab-inactive');
+                    });
+                    e.target.classList.remove('tab-inactive');
+                    e.target.classList.add('tab-active');
+                    
+                    // Show/hide content
+                    projectsContentContainer.querySelectorAll('div[id^="project-content-"]').forEach(div => {
+                         div.classList.add('hidden');
+                    });
+                    document.getElementById(`project-content-${level}`).classList.remove('hidden');
+                }
+            });
+
+
+            // --- Scroll Animations ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.fade-in').forEach((el) => {
+                observer.observe(el);
+            });
+
+        });
+    </script>
+</body>
+</html>
+
