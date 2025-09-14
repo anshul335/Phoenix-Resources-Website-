@@ -9,13 +9,13 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a; 
+            background-color: #0a0a0a; /* A very dark grey, almost black */
         }
         .text-glow {
             text-shadow: 0 0 8px rgba(0, 255, 255, 0.6), 0 0 10px rgba(0, 255, 255, 0.4);
         }
         .card {
-            background-color: rgba(17, 24, 39, 0.8); 
+            background-color: rgba(17, 24, 39, 0.8); /* Semi-transparent dark blue-gray */
             border: 1px solid rgba(55, 65, 81, 0.5);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -27,12 +27,12 @@
             box-shadow: 0 10px 20px rgba(0, 255, 255, 0.1);
         }
         .tab-active {
-            background-color: #0891b2; 
+            background-color: #0891b2; /* Cyan-600 */
             color: white;
         }
         .tab-inactive {
-            background-color: rgba(31, 41, 55, 0.5); 
-            color: #9ca3af; 
+            background-color: rgba(31, 41, 55, 0.5); /* Gray-800 semi-transparent */
+            color: #9ca3af; /* Gray-400 */
         }
         .tab-inactive:hover {
             background-color: rgba(55, 65, 81, 0.7);
@@ -46,6 +46,45 @@
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* Animation for team photo */
+        @keyframes rotateLight {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .photo-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem; /* Match the image's border-radius */
+        }
+
+        .photo-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 180deg at 50% 50%,
+                transparent 0%,
+                #06b6d4 10%, /* A brighter cyan */
+                #22d3ee 20%,
+                transparent 35%
+            );
+            animation: rotateLight 6s linear infinite;
+            z-index: 1;
+        }
+
+        .photo-container img {
+            position: relative;
+            z-index: 2; /* Ensure image is on top of the light effect */
+        }
     </style>
 </head>
 <body class="text-gray-300">
@@ -54,12 +93,13 @@
     <header class="py-6 px-4 md:px-8 sticky top-0 z-50" style="background-color: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <img src="logo.jpeg" alt="Phoenix Logo" class="w-10 h-10 rounded-full">
+                <img src="logo.jpeg" alt="Phoenix Logo" class="w-10 h-10 rounded-2xl">
                 <h1 class="text-xl md:text-2xl font-bold text-white"><span class="text-cyan-400">Phoenix Resources</span> </h1>
             </div>
             <nav class="hidden md:flex gap-6 items-center">
                 <a href="#resources" class="hover:text-cyan-400 transition-colors">Resources</a>
                 <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+                <a href="#team" class="hover:text-cyan-400 transition-colors">Meet The Team</a>
             </nav>
         </div>
     </header>
@@ -110,10 +150,148 @@
                 </div>
             </div>
         </section>
+
+        <!-- Meet the Team Section -->
+        <section id="team" class="py-20 px-4 md:px-8">
+            <div class="container mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Meet the Phoenix Family</h2>
+                    <p class="text-gray-400 mt-2">The brilliant minds behind the bots.</p>
+                </div>
+
+                <!-- Coordinators -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold text-cyan-400 text-center mb-4 fade-in" style="transition-delay: 100ms;">Coordinators</h3>
+                    <p class="text-center text-gray-400 max-w-3xl mx-auto mb-8 fade-in" style="transition-delay: 200ms;">Our coordinators are the guiding stars of the club, ensuring everything runs smoothly, from managing projects to organizing workshops. They're the go-to people for any club-related queries.</p>
+                    <div class="flex justify-center flex-wrap gap-8 md:gap-16">
+                        <!-- Coordinator Card 1 -->
+                        <div class="text-center fade-in" style="transition-delay: 300ms;">
+                            <h4 class="text-xl font-bold text-white">Akshat Mehta (Y-23)</h4>
+                            <a href="tel:9521593891"><p class="text-gray-400">9521593891</p></a>
+                        </div>
+                         <!-- Coordinator Card 2 -->
+                        <div class="text-center fade-in" style="transition-delay: 400ms;">
+                            <h4 class="text-xl font-bold text-white">Utkarsh Kumar (Y-23)</h4>
+                            <a href="tel:8840566896"><p class="text-gray-400">8840566896</p></a>
+                        </div>
+                         <!-- Coordinator Card 3 -->
+                        <div class="text-center fade-in" style="transition-delay: 500ms;">
+                            <h4 class="text-xl font-bold text-white">Dhruv Gupta (Y-23)</h4>
+                            <a href="tel:8005681519"><p class="text-gray-400">8005681519</p></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Domains -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold text-cyan-400 text-center mb-8">Our Domains</h3>
+                    <div class="max-w-3xl mx-auto space-y-4">
+                        <!-- Creative Domain -->
+                        <div class="bg-gray-900/50 rounded-lg">
+                            <button class="domain-toggle w-full flex justify-between items-center text-left p-6 focus:outline-none">
+                                <div>
+                                    <h4 class="text-xl font-bold text-white">Creative</h4>
+                                    <p class="text-gray-400 mt-1 pr-4">This domain focuses on bringing imaginative robotic ideas to life through innovative design and artistry.</p>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500 transform transition-transform flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="domain-content hidden px-6 pb-6">
+                                <div class="pt-4 border-t border-gray-700/50">
+                                    <h5 class="text-lg font-semibold text-white mb-4">Domain Leads</h5>
+                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                        <!-- Lead 1 -->
+                                        <div>
+                                            <p class="font-semibold text-white">Aryan Gupta (Y-23)</p>
+                                            <a href="tel:9351779671"><p class="text-gray-400 text-sm">9351779671</p></a>
+                                        </div>
+                                        <!-- Lead 2 -->
+                                        <div>
+                                            <p class="font-semibold text-white">Nishit Luhadia (Y-23)</p>
+                                            <a href="tel:7410886350"><p class="text-gray-400 text-sm">7410886350</p></a>
+                                        </div>
+                                         <!-- Lead 3 -->
+                                        <div>
+                                            <p class="font-semibold text-white">Arihant Agrawal</p>
+                                            <a href="tel:8851745472"><p class="text-gray-400 text-sm">8851745472</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Competition Domain -->
+                        <div class="bg-gray-900/50 rounded-lg">
+                            <button class="domain-toggle w-full flex justify-between items-center text-left p-6 focus:outline-none">
+                                <div>
+                                    <h4 class="text-xl font-bold text-white">Competition</h4>
+                                    <p class="text-gray-400 mt-1 pr-4">Here, we build high-performance robots to dominate in national and international robotics competitions.</p>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500 transform transition-transform flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="domain-content hidden px-6 pb-6">
+                                <div class="pt-4 border-t border-gray-700/50">
+                                    <h5 class="text-lg font-semibold text-white mb-4">Domain Leads</h5>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <!-- Lead 1 -->
+                                        <div>
+                                            <p class="font-semibold text-white">Harshit Kothari (Y-23)</p>
+                                            <a href="tel:7878686564"><p class="text-gray-400 text-sm">7878686564</p></a>
+                                        </div>
+                                        <!-- Lead 2 -->
+                                        <div>
+                                            <p class="font-semibold text-white">Udbhav Singh (Y-23)</p>
+                                            <a href="tel:9453020839"><p class="text-gray-400 text-sm">9453020839</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quark Domain -->
+                        <div class="bg-gray-900/50 rounded-lg">
+                            <button class="domain-toggle w-full flex justify-between items-center text-left p-6 focus:outline-none">
+                                <div>
+                                    <h4 class="text-xl font-bold text-white">Quark</h4>
+                                    <p class="text-gray-400 mt-1 pr-4">Quark is our research and development wing, exploring cutting-edge technologies and advanced robotics concepts.</p>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500 transform transition-transform flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="domain-content hidden px-6 pb-6">
+                                <div class="pt-4 border-t border-gray-700/50">
+                                    <h5 class="text-lg font-semibold text-white mb-4">Domain Leads</h5>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <!-- Lead 1 -->
+                                        <div>
+                                            <p class="font-semibold text-white">Nilesh Goyal (Y-23)</p>
+                                            <a href="tel:8209905224"><p class="text-gray-400 text-sm">8209905224</p></a>
+                                        </div>
+                                        <!-- Lead 2 -->
+                                        <div>
+                                            <p class="font-semibold text-white">Monish Mathur (Y-23)</p>
+                                            <a href="tel:9460619980"><p class="text-gray-400 text-sm">9460619980</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phoenix member Photo -->
+                <div class="mt-16 fade-in" style="transition-delay: 300ms;">
+                     <div class="text-center mb-8">
+                         <h3 class="text-2xl font-bold text-cyan-400">The Phoenix Family</h3>
+                     </div>
+                     <div class="photo-container max-w-5xl mx-auto">
+                        <img src="Members.jpg" alt="Phoenix Family Photo" class="rounded-lg shadow-lg w-full">
+                     </div>
+                </div>
+            </div>
+        </section>
     </main>
     
     <!-- Footer -->
-    <footer class="bg-[#0a0a0a] py-8">
+    <footer class="bg-gray-900 py-8">
         <div class="container mx-auto text-center text-gray-500">
             <div class="flex justify-center gap-6 mb-4">
                 <a href="https://www.linkedin.com/company/phoenix-lnmiit" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn">
@@ -123,12 +301,17 @@
                 </a>
                 <a href="https://www.instagram.com/phoenix.lnmiit/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664 4.771 4.919-4.919 1.266-.057 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/>
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664 4.771 4.919 4.919 1.266-.057 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/>
                     </svg>
                 </a>
-                <a href="https://phoenix.lnmiit.ac.in/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Main Website">
+                 <a href="https://phoenix.lnmiit.ac.in/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Main Website">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                    </svg>
+                </a>
+                <a href="mailto:phoenix.club@lnmiit.ac.in" class="text-gray-400 hover:text-white transition-colors" aria-label="Email">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                     </svg>
                 </a>
             </div>
@@ -355,6 +538,17 @@
             });
 
 
+            // --- Domain Accordion Logic ---
+            document.querySelectorAll('.domain-toggle').forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+                    
+                    content.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-45');
+                });
+            });
+
             // --- Scroll Animations ---
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -374,3 +568,4 @@
     </script>
 </body>
 </html>
+
